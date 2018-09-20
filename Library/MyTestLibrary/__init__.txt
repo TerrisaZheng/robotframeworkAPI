@@ -1,0 +1,18 @@
+*** Keywords ***
+version.py
+    VERSION=‘1.0’
+
+testTemp.py
+    class TestTemp(object):
+    def __init__(self):
+    pass
+    def mytest(self):    #此处为定义的keyword,可以在robotframework 中进行关键字测试。
+    print "mytest"
+
+_init_.py
+    from testTemp import
+    TestTemp
+    from version import VERSION
+    _version_ = VERSION
+    class MyTestLibrary(TestTemp):
+    ROBOT_LIBRARY_SCOPE ='GLOBAL'

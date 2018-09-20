@@ -1,0 +1,6 @@
+*** Settings ***
+Suite Setup       Login
+Library           Selenium2Library
+Library           BuiltIn
+
+*** Test Cases ***

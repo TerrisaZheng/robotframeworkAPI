@@ -1,0 +1,45 @@
+*** Settings ***
+Resource          Keywords.robot
+Library           RequestsLibrary
+Library           requests
+Resource          Checkpoint.txt
+
+*** Keywords ***
+登录流程
+    打开浏览器
+    首页登录按钮
+    输入用户名
+    输入密码
+    登录
+
+注册流程
+    打开浏览器
+    首页注册按钮
+    sleep    5
+    输入注册电话
+    输入孩子生日
+    输入孩子中文名
+    输入孩子英文名
+    短信验证码
+    设置密码
+    渠道信息
+    提交注册
+    Click Element    css=.smt-button.smt-button-red
+    comment    Sleep    5
+    ${title}    Get Text    css=.title
+    should contain    ${title}    账号注册
+    log    ${title}
+
+约课流程
+    登录流程
+    预约课程
+    Session建立
+    选择开课教师
+    选择开课时间
+
+上课流程
+    登录流程
+    Session建立
+    今日课程接口
+
+支付流程

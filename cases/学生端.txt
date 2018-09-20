@@ -1,0 +1,98 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          ../resources/Keywords.robot
+Resource          ../resources/Workflow.txt
+Library           requests
+Library           RequestsLibrary
+Library           Collections
+Library           urllib2
+Library           json
+Library           HttpLibrary
+Library           Collections
+Library           HttpLibrary.HTTP
+Library           String
+Library           OperatingSystem
+Resource          ../resources/Values.txt
+Resource          ../resources/Checkpoint.txt
+
+*** Variables ***
+
+*** Test Cases ***
+SignIn
+    登录流程
+    家长中心页
+
+SignUp
+    注册流程
+
+点击预约课程
+    约课流程
+    家长中心页
+    Sleep    5
+
+上课
+    上课流程
+    Location Should Contain
+
+支付
+    登录流程
+    家长中心页
+    Click Element    ${家长中心_我的USKid}
+    Click Element    ${家长中心_我的订单}
+    Sleep    5
+    我的订单
+    Sleep    5
+    立即支付
+    Click Element    css=.smt-button.smt-button-normal
+    Sleep    5
+    实际应付金额
+    Click Element    css=.smt-button.smt-button-normal.smt-button-md
+    ${payment}    Get Value    css=.should-payment>input
+    Log    ${payment}
+    Sleep    5
+    Select window    title=支付宝 - 网上支付 安全快速！
+    Sleep    5
+    ${ZFB}    Get Text    ${ZFB_money}
+    Log    ${ZFB}
+    Run Keyword IF    ${payment}==${ZFB}    Log    Successful
+    ...    ELSE    Log    金额错误
+
+查看教师详情
+    Click Element    css=.smt-card-left>a
+    sleep    5
+
+点击个人主页
+    Click Element    css=.user-main-menu>div:nth-child(1)
+    sleep    5
+
+进教室
+    Click Element    css=.smt-button.smt-button-fill-normal.smt-button-md
+    sleep    5
+
+我的USKid
+    Click Element    css=.list>div>a>span
+    sleep    5
+
+我的订单
+    Click Element    css=.list>ul>li:nth-child(2)
+    sleep    5
+
+检查付款按钮
+    comment    点一下其他地方，释光标
+    Click Element    css=.smt-order-list-item
+    comment    点击立即支付
+    Click Element    css=.smt-button.smt-button-normal
+    sleep    5
+    comment    选择支付宝
+    Click Element    css=.pay-type-sel
+    sleep    5
+    comment    点击确认支付
+    Click Element    css=.smt-button.smt-button-normal.smt-button-md
+    sleep    5
+
+退出登录
+    Click Element    css=.list>ul>li:nth-child(5)
+    sleep    5
+
+Close Browser
+    Close Browser

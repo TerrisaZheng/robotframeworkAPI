@@ -1,0 +1,16 @@
+*** Variables ***
+${SignIn_Username}    18500077016
+${Mon}            1505113200
+${Tue}            1505199600
+${Wed}            1505286000
+${Thu}            1505372400
+${Fri}            1505458800
+${Sat}            1505545200
+${Sun}            1505631600
+${timeslot}       ${EMPTY}
+${家长中心Session}    http://api.uskid.tech/child
+${URL_Student}    http://uskid.tech/
+${cookiename}     us_user
+${character_家长中心}    家长中心
+${null}           ${EMPTY}
+${character_ no Lesson info}    There is no current lesson info

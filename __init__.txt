@@ -1,0 +1,30 @@
+*** Settings ***
+Library           Selenium2Library
+Library           DatabaseLibrary
+Library           BuiltIn
+Library           Collections
+Library           DateTime
+Library           Dialogs
+Library           OperatingSystem
+Library           Process
+Library           Screenshot
+Library           String
+Library           Telnet
+Library           XML
+Library           RequestsLibrary
+Library           requests
+Library           json
+Library           urllib2
+Library           HttpLibrary
+Library           String
+
+*** Keywords ***
+Setup_Pre_Condition
+    ${time}    Evaluate    datetime.datetime.now()    datetime
+    Set Enviroment Variable
+    Setup_Tested_Variable
+    Setup_Tested_Variable
+
+Setup_Testbed_Variable
+
+Setup_Website_Variable

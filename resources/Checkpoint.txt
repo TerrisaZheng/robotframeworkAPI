@@ -1,0 +1,31 @@
+*** Settings ***
+Resource          Variables.txt
+Resource          Values.txt
+Resource          Keywords.robot
+
+*** Keywords ***
+家长中心页
+    ${title}    Get text    css=.title
+    should contain    ${title}    家长中心
+    log    ${title}
+
+进入教室按钮
+    ${text}    Get text    css=.smt-button.smt-button-fill-normal.smt-button-md
+    should contain    ${text}    进入教室
+
+我的订单
+    ${user-title}    Get text    css=.user-title
+    should contain    ${user-title}    我的订单
+    log    ${user-title}
+
+立即支付
+    ${user-title}    Get text    css=.smt-button.smt-button-normal
+    should contain    ${user-title}    立即支付
+    log    ${user-title}
+
+教室URL
+
+实际应付金额
+    ${user-title}    Get text    css=.payment-right
+    should contain    ${user-title}    实际应付金额
+    log    ${user-title}
